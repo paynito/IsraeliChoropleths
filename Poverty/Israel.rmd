@@ -86,3 +86,82 @@ The units here are in difference of percentage points; bigger negative numbers a
 1. use this code base with real data.
 
 2. examine objects made by csvs, make real data in these formats (data frames?)
+
+# get some real data - population by district
+http://cbs.gov.il/shnaton67/download/st02_22.xls
+```{r}
+# need to wrap this in a check for the file on the local machine
+# then not download twice
+
+# download instructions: http://stackoverflow.com/questions/24146124/how-to-download-a-file-using-rcurl
+#setwd("/Users/AbuDavid/scratch/IsraeliChoropleths/")
+#doc<-RCurl::getBinaryURL("http://cbs.gov.il/shnaton67/download/st02_22.xls")
+#writeBin(as.vector(doc),"../data/st02_22.xls")
+
+```
+read the data
+```{r}
+popData <-rio::import("../data/st02_22.xls", format="xls")
+##  View(popData) ## doesn't get the rows correct
+## data published Sept. 1, 2016
+df1 <- xlsx::read.xlsx("../data/st02_22.xls",
+                sheetIndex = 1)
+df2 <- xlsx::read.xlsx("../data/st02_22.xls",
+                sheetIndex = 2)
+#View(df1)
+#View(df2)
+# visually inspect data, I want the NA..2 column
+typeof(df1)
+df3<-as.data.frame(df1)
+df4<-as.data.frame(df2)
+z<-colnames(df1)
+colnames(df3)[4]  <- "pop2016"
+colnames(df4)[4]  <- "pop2016"
+# rename NA..2 for ease of use
+# read in population in thousands
+jeruPop <- df3$pop2016[20]  
+jeruPop
+haifaPop <- df3$pop2016[40]  
+haZafonPop <- df3$pop2016[22]  #north
+haMercazPop <- df4$pop2016[12] #central #2nd sheet of xls
+haDaromPop <- df4$pop2016[27]  #south   #2nd sheet of xls
+telAvivPop <- 1258.77 #2008 pop source: http://www.cbs.gov.il/www/mifkad/mifkad_2008/tables/dem1_2.xls 
+golanPop <- df3$pop2016[25]  
+typeof(golanPop)
+```
+### look at the fake data
+### copy
+### insert real population data
+```{r}
+View(poverty11)
+rownames(poverty11)
+colnames(poverty11)
+```
+```{r}
+poverty11$District
+```
+```{r}
+poverty11$District[1]
+population2016<-poverty11
+population2016$Population[1]<-golanPop
+population2016$Population[2]<-haDaromPop
+population2016$Population[3]<-haifaPop
+population2016$Population[4]<-haMercazPop
+population2016$Population[5]<-haZafonPop
+population2016$Population[6]<-jeruPop
+population2016$Population[7]<-telAvivPop
+```
+## show the actual population of IL in choropleth
+### adapt the graphing code
+
+```{r echo=T, comment=NA, fig.height=7.2, fig.width=12, cache=TRUE}
+npchoropleth(population2016, 'District', 'Population')
+```
+Wow, is that correct? Is the population density really that skewed? Let's view a table.
+```{r}
+View(population2016) 
+# Jerusalem pop is 53,000 in the .xls, and in my variable, but only 19 after it is saved in the table. 
+# is my pop correct for Jerusalem district? or for the city?
+# need to match it with the same definition used in the housing portion.
+```
+
