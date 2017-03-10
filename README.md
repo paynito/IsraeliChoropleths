@@ -1,5 +1,13 @@
-NepalMaps
----------
+# Israeli choropleth functions
+## that means a meaningful color gradient
+on an 8-district map of Israeli administrative areas.
+
+### todo:
+find the correct lat/long for the name overlay read from districs.csv
+
+# forked from:
+[NepalMaps](https://github.com/prabhasp/NepalMaps)
+--------- this looks like a great codebase to build on ---------------------------------
 
 A small repository mapping data from Nepal. Maps are mainly made using R. The object of making this work, which is mostly experimentation, into a public repository is such that others may clone the repo and make their own maps using their own data.
 

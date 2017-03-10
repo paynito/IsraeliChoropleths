@@ -7,11 +7,11 @@ library(plyr)
 library(reshape2)
 
 # Install Directory -- WILL NEED TO BE MODIFIED PER DEPLOYMENT
-install_dir = "~/Code/NepalMaps"
-setwd(install_dir)
+install_dir = "~/scratch/NepalMaps"
+#setwd(install_dir)
 
 # MAP setup
-np_dist <- readShapeSpatial("baselayers/NPL_adm/NPL_adm3.shp")
+np_dist <- rgdal::readOGR("./baselayers/NPL_adm/NPL_adm3.shp")
 np_distf <- fortify(np_dist, region="NAME_3")
 
 choropleth <- function(data, x, y, fortifiedpolygons, extra) {
