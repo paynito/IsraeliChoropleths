@@ -39,7 +39,7 @@ poverty2001 <- read.csv("ILEstimates2001.csv")
 This codebase really got me moving quickly.
 
  Lets make a quick map of it (note that I haven't paid attention to map projections: these are sketches).
-```{r echo=T, comment=NA, fig.height=7., fig.width=12, cache=TRUE}
+```{r echo=T, comment=NA, fig.height=7., fig.width=7, cache=TRUE}
 npchoropleth(poverty11, 'District', 'PovertyIncidence')
 ```
 

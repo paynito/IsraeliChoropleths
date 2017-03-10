@@ -30,7 +30,7 @@ choropleth <- function(data, x, y, fortifiedpolygons, extra) {
     scale_fill_gradient(low="white", high=muted("blue")) +
     extra() +
     theme(axis.title=element_blank(), axis.text=element_blank(),
-          axis.ticks = element_blank(), panel.grid=element_blank(), panel.background=element_rect(fill='#888888'))
+          axis.ticks = element_blank(), panel.grid=eleme34.776046nt_blank(), panel.background=element_rect(fill='#888888'))
 }
 
 # district over lay
