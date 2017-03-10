@@ -2,7 +2,7 @@
 Poverty by District in Israel, mapped
 ---
 # clone this directory to reproduce
-
+https://github.com/paynito/IsraeliChoropleths/archive/c68bf5872a58ae5793b761bc4bc1cafd6afa1b16.zip
 ## 0. Data preparation
 
 Make fake data of the same style as Nepal estimates. But for many fewer districts. Use
@@ -12,13 +12,11 @@ Isreali district names.
 Lets load up the data and the "NepalMapUtils" library. This works fine if you do a [setwd](http://www.statmethods.net/interface/workspace.html) to inside the `Poverty` folder within the [NepalMaps](http://github.com/prabhasp/NepalMaps) repository.
 
 ```{r echo=T, comment=NA, fig.height=6, fig.width=10, cache=TRUE}
-getwd()
+#setwd("~/scratch/IsraelChoropleths")
 # setwd(...) here
-poverty11 <- read.csv("ILEstimates2011.csv")
+poverty11 <- read.csv("./ILEstimates2011.csv")
 source("../IsraelMapUtils.R")
 ```
-
-We will do one tranformation before proceeding, which is to rename our columns. In the dataset, "FGT(0)" (which loads in R as `FGT.0.` because R doesn't like parentheses) is the _poverty incidence_ metric, defined as proportion of individuals living in that area who are in households with an average per capita expenditure below the poverty line. FGT(1) is the _poverty gap_, which is the average distance below the poverty line, being zero for those individuals above the line, and FGT(2) is _poverty severity_, the squared distance for those below hte line, which gives more weight to the very poor. [(See 2006 report for definitions)](http://cbs.gov.np/wp-content/uploads/2012/Others/SAE%20of%20Poverty,%20Caloric%20Intake%20and%20Malnutrition%20in%20Nepal.pdf).
 
 So lets go ahead and rename our columns to these understandable names:
 ```{r}
@@ -40,7 +38,7 @@ This codebase really got me moving quickly.
 
  Lets make a quick map of it (note that I haven't paid attention to map projections: these are sketches).
 ```{r echo=T, comment=NA, fig.height=7., fig.width=7, cache=TRUE}
-npchoropleth(poverty11, 'District', 'PovertyIncidence')
+#npchoropleth(poverty11, 'District', 'PovertyIncidence')
 ```
 
 A second map, coloring those that are above the mean (weighted by population) as blue and those below as red:

@@ -14,7 +14,7 @@ setwd(install_dir)
 il_dist <- rgdal::readOGR("./baselayers/IL_adm/ISR_adm1.shp")
 #np_distf <- fortify(np_dist, region="NAME_3")
 #old_dist <- rgdal::readOGR("./baselayers/NPL_adm/NPL_adm3.shp")
-IsraelPoints  <- fortify(IsraelPolygon)
+#IsraelPoints  <- fortify(IsraelPolygon)
 il_distf <- fortify(il_dist, region="NAME_1")
 
 choropleth <- function(data, x, y, fortifiedpolygons, extra) {

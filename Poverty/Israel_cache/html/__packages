@@ -1,0 +1,8 @@
+base
+rgeos
+sp
+maptools
+ggplot2
+scales
+plyr
+reshape2
