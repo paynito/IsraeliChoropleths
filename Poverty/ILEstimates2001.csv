@@ -1,0 +1,8 @@
+Region,District,PovertyIncidence,S.E.-P.I.,PovertyGap,S.E-P.G.,PovertySeverity,S.E.-P.S.
+Eastern,Golan,0.518,0.025,0.17,0.012,0.075,0.007
+Eastern,HaDarom,0.525,0.022,0.17,0.011,0.074,0.006
+Eastern,Haifa,0.397,0.017,0.121,0.008,0.051,0.005
+Eastern,HaMerkaz,0.134,0.013,0.031,0.004,0.011,0.001
+Eastern,HaZafon,0.172,0.011,0.041,0.003,0.015,0.001
+Eastern,Jerusalem,0.212,0.014,0.052,0.004,0.019,0.002
+Eastern,Tel Aviv,0.46,0.021,0.144,0.01,0.062,0.005
